@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 const Country = (props) => {
     const {name,capital,nativeName,region} = props.country;
@@ -8,6 +8,10 @@ const Country = (props) => {
         borderRadius:'20px',
         margin: '20px',
         padding : '20px'
+    }
+    const history = useHistory();
+    const HandleCountry = (name)=>{
+        history.push(`/country/${name}`)
     }
     return (
         <div style={countryStyle}>
@@ -18,6 +22,7 @@ const Country = (props) => {
             <Link to={`/country/${name}`}>
                 <button>Click for Details</button>
             </Link>
+            <button onClick={() => HandleCountry(name)}>Click me</button>
         </div>
     );
 };
